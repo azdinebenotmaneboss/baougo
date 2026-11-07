@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BaouGo – Saint-Jeannet</title>
+<meta name="description" content="BaouGo – se garer, prendre la navette et monter à pied au village de Saint-Jeannet.">
+<meta name="theme-color" content="#0a4f9e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BaouGo">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/splash-750x1334.png">
+<link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="splash/splash-828x1792.png">
+<link rel="apple-touch-startup-image" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1170x2532.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1179x2556.png">
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1206x2622.png">
+<link rel="apple-touch-startup-image" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1284x2778.png">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash/splash-1320x2868.png">
+<style>
+@font-face{font-family:Fraunces;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/fraunces-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Fraunces;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/fraunces-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Inter;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/inter-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Outfit;font-style:normal;font-weight:300;font-display:swap;src:url(fonts/outfit-latin-300-normal.woff2) format('woff2')}
+@font-face{font-family:Outfit;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/outfit-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:Outfit;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/outfit-latin-800-normal.woff2) format('woff2')}
+</style>
+<style>
+:root{
+  --pierre:#f3f1ec; --carte:#ffffff; --encre:#12324f; --doux:#5d6b7a;
+  --olive:#0a4f9e; --olive-c:#dde8f5;      /* bleu Saint-Jeannet (principal) */
+  --or:#e9c23f; --ocre:#c99a1c; --ocre-c:#fbf1d3;
+  --vert:#3a9440; --vert-c:#e3f1e2;
+  --ciel:#1f5486; --ciel-c:#e2ebf4; --rouge:#b1432f; --ligne:#e1e5ea;
+  --r:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--pierre);color:var(--encre);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.45}
+body{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.15}
+a{color:var(--ciel)}
+header{background:#fff}
+header .barre{display:flex;align-items:center;justify-content:center;padding:calc(8px + env(safe-area-inset-top)) 14px 8px;border-bottom:3px solid var(--or)}
+header .logo{height:44px;width:auto;display:block}
+header .bandeau{position:relative;padding:22px 16px 20px;background:linear-gradient(180deg,#f4f9f1 0%,#ffffff 100%);overflow:hidden;text-align:center;border-bottom:1px solid var(--ligne)}
+header .bandeau:before{content:"";position:absolute;inset:0;background:url(img/filigrane.jpg) center 35%/cover;opacity:.32;filter:saturate(.7)}
+header .bandeau:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,255,255,.75) 0%,rgba(255,255,255,.25) 70%)}
+header .entete{position:relative;z-index:1}
+header .marque{display:inline-flex;align-items:center;gap:2px;font-family:Outfit,Inter,sans-serif;font-weight:800;font-size:54px;line-height:1;letter-spacing:-.04em}
+header .marque .b{color:var(--olive)}
+header .marque .g{color:var(--vert)}
+header .marque .feuille{width:34px;height:34px;margin:-24px 0 0 2px;transform:rotate(8deg)}
+header p{margin:8px 0 0;font-family:Outfit,Inter,sans-serif;font-weight:300;font-size:16px;color:var(--encre);letter-spacing:.02em}
+header .pills{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+header .pills button{font-family:inherit;cursor:pointer;font-size:12px;font-weight:600;color:var(--olive);background:rgba(255,255,255,.85);border:1px solid #cfe0f2;border-radius:999px;padding:4px 10px;backdrop-filter:blur(4px)}
+header .pills button:active{background:var(--olive);color:#fff}
+.installer{display:flex;gap:12px;align-items:flex-start;margin-top:12px;background:#fff;border:1.5px solid var(--olive);border-radius:var(--r);padding:12px 12px 12px 14px;position:relative;box-shadow:0 4px 14px rgba(10,79,158,.12)}
+[hidden]{display:none!important}
+.inst-ic{width:46px;height:46px;border-radius:11px;flex:0 0 46px}
+.inst-txt{font-size:13.5px;padding-right:18px}
+.inst-txt b:first-child{display:block;font-size:15px;color:var(--olive);margin-bottom:2px}
+.inst-txt .btn{margin-top:8px}
+.share{width:17px;height:17px;vertical-align:-3px;color:var(--olive)}
+.inst-x{position:absolute;top:6px;right:8px;border:0;background:none;font-size:15px;color:var(--doux);cursor:pointer;padding:4px}
+.proto{margin:12px 14px 0;background:var(--ocre-c);border:1px solid #f0dc9c;border-radius:12px;padding:9px 12px;font-size:12.5px;color:#6e5410}
+main{padding:6px 14px 20px;max-width:640px;margin:0 auto}
+section.vue{display:none}
+section.vue.active{display:block}
+.carte{background:var(--carte);border:1px solid var(--ligne);border-radius:var(--r);padding:16px;margin-top:12px}
+.carte h2{font-size:19px;margin-bottom:6px}
+.carte h3{font-size:16px}
+.muted{color:var(--doux);font-size:13px}
+.statut{display:flex;gap:12px;align-items:center}
+.pastille{width:14px;height:14px;border-radius:50%;flex:0 0 14px}
+.on{background:#3d9a4a;box-shadow:0 0 0 5px #3d9a4a33}
+.off{background:#b9b2a5}
+.choix{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}
+.choix button{border:1px solid var(--ligne);background:var(--carte);border-radius:14px;padding:14px 6px;font:inherit;font-weight:600;color:var(--encre);display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer}
+.choix button span.ic{font-size:26px}
+.choix button small{font-weight:400;color:var(--doux);font-size:11.5px}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:999px;margin:4px 4px 0 0}
+.t-vert{background:var(--vert-c);color:#2b7231}
+.t-ocre{background:var(--ocre-c);color:#7a5a08}
+.t-ciel{background:var(--ciel-c);color:var(--ciel)}
+.t-rouge{background:#f3d9d2;color:var(--rouge)}
+.t-gris{background:#ebe6dc;color:var(--doux)}
+.btn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;padding:9px 14px;border-radius:999px;background:var(--olive);color:#fff;text-decoration:none;font-weight:600;font-size:13.5px;border:0}
+.btn.sec{background:transparent;color:var(--olive);border:1.5px solid var(--olive)}
+.arrets{list-style:none;margin:12px 0 0;padding:0;position:relative}
+.arrets li{position:relative;padding:0 0 14px 28px}
+.arrets li:before{content:"";position:absolute;left:6px;top:4px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid var(--ciel)}
+.arrets li:not(:last-child):after{content:"";position:absolute;left:12px;top:18px;bottom:0;width:2px;background:var(--ciel-c)}
+.arrets li.term:before{background:var(--ciel)}
+.horaires{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.horaires div{background:var(--ciel-c);border-radius:12px;padding:10px;text-align:center}
+.horaires b{display:block;font-size:17px;color:var(--ciel)}
+.saisons{display:grid;gap:8px;margin-top:10px}
+.saisons div{border:1.5px solid var(--ligne);border-radius:12px;padding:9px 12px;opacity:.6}
+.saisons div.actuelle{border-color:var(--olive);background:var(--olive-c);opacity:1}
+.saisons b{display:block;font-size:14px}
+.saisons span{font-size:13px;color:var(--doux)}
+.rando{border-top:1px solid var(--ligne);padding-top:12px;margin-top:12px}
+.rando:first-of-type{border-top:0;padding-top:0}
+.chiffres{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px;font-size:13px}
+.chiffres b{font-size:15px}
+.alerte{background:#fbeee9;border:1px solid #efcdc2;border-radius:12px;padding:10px 12px;margin-top:12px;font-size:13.5px;color:#7d2f1f}
+.calc label{display:block;font-size:13px;color:var(--doux);margin-top:10px}
+.calc input[type=range]{width:100%;accent-color:var(--vert)}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.res div{background:var(--vert-c);border-radius:12px;padding:12px}
+.res b{display:block;font-family:Fraunces,serif;font-size:24px;color:#2b7231}
+ul.conseils{padding-left:18px;margin:8px 0 0}
+ul.conseils li{margin-bottom:6px}
+nav{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));background:var(--olive);border-radius:20px;display:flex;padding:6px 4px;z-index:9;box-shadow:0 6px 20px rgba(10,40,80,.35);border-top:3px solid var(--or)}
+nav button{flex:1;background:none;border:0;font:inherit;font-size:11px;color:#dce7f5;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;cursor:pointer;border-radius:14px}
+nav button .ic{font-size:22px;line-height:1}
+nav button.active{color:var(--encre);background:var(--or);font-weight:700}
+.plan{width:100%;height:auto;display:block;margin-top:8px}
+.photo{width:calc(100% + 32px);margin:-16px -16px 12px;display:block;border-radius:var(--r) var(--r) 0 0;aspect-ratio:16/9;object-fit:cover}
+.circul{display:flex;gap:12px;align-items:center;margin-top:12px;background:#b1432f;color:#fff;border-radius:var(--r);padding:14px 16px;box-shadow:0 4px 14px rgba(177,67,47,.3);border-left:6px solid var(--or)}
+.circul-ic{font-size:26px;line-height:1;flex:0 0 auto}
+.circul b{display:block;font-size:16px;margin-bottom:3px}
+.circul span{font-size:13.5px;opacity:.95}
+.nav-gps{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px}
+.nav-gps .btn{margin-top:0}
+.btn.waze{background:#33ccff;color:#0b2a3c}
+.nav-gps .alt{font-size:12.5px;color:var(--doux)}
+.src{font-size:11.5px;color:var(--doux);margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="barre"><img src="img/logo.png" alt="Saint-Jeannet – Porte des Baous – Longo Maï" class="logo"></div>
+  <div class="bandeau">
+    <div class="entete">
+      <div class="marque"><span class="b">Baou</span><span class="g">Go</span><svg class="feuille" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3C10 3 4 8 4 15c0 2 .6 3.6 1.4 4.8C7 13 11 10 16 8c-4 3-7 6-8.6 11.6C8.6 20.5 10 21 12 21c6 0 9-6 8-18z" fill="#3a9440"/></svg></div>
+      <p>Garez-vous en bas, montez léger</p>
+      <div class="pills"><button data-go="navette">🚐 navette</button><button data-go="pied">🥾 marche</button><button data-go="parkings">🅿️ parkings</button></div>
+    </div>
+  </div>
+</header>
+<div class="proto">🛠️ Prototype en cours de validation. Les infos marquées <b>« à confirmer »</b> doivent être vérifiées par la mairie avant diffusion.</div>
+
+<main>
+<!-- ACCUEIL -->
+<section class="vue active" id="v-accueil">
+  <div class="installer" id="installer" hidden>
+    <img src="icons/apple-touch-icon.png" alt="" class="inst-ic" loading="lazy">
+    <div class="inst-txt">
+      <b>Installer BaouGo</b>
+      <span id="instIos">Touchez <svg viewBox="0 0 24 24" class="share" aria-label="Partager"><path d="M12 3v12M7 8l5-5 5 5M5 12v8h14v-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> <b>Partager</b> en bas de Safari, puis <b>« Sur l'écran d'accueil »</b>.</span>
+      <span id="instAndroid" hidden>Ajoutez l'appli à votre écran d'accueil, sans téléchargement.</span>
+      <button class="btn" id="instBtn" hidden>Installer</button>
+    </div>
+    <button class="inst-x" id="instX" aria-label="Fermer">✕</button>
+  </div>
+  <div class="circul">
+    <div class="circul-ic">⛔🚗</div>
+    <div><b>Évitez de traverser le village en voiture</b>
+    <span>Ruelles très étroites. Certains GPS proposent des itinéraires inadaptés.</span></div>
+  </div>
+  <div class="carte">
+    <div class="statut">
+      <div class="pastille" id="pNav"></div>
+      <div>
+        <h3 id="navTitre">Navette</h3>
+        <div class="muted" id="navTexte"></div>
+      </div>
+    </div>
+  </div>
+  <div id="alerteMarche"></div>
+
+  <div class="carte">
+    <h2>Comment voulez-vous monter ?</h2>
+    <div class="choix">
+      <button data-go="navette"><span class="ic">🚐</span>Navette<small>gratuite</small></button>
+      <button data-go="pied"><span class="ic">🥾</span>À pied<small>20–30 min</small></button>
+      <button data-go="parkings"><span class="ic">🅿️</span>Voiture<small>parkings</small></button>
+    </div>
+  </div>
+
+  <div class="carte">
+    <h2>Le bon réflexe</h2>
+    <p style="margin:4px 0 0">Le week-end, les parkings du village saturent vite. Garez-vous au <b>parking de l'école des Prés</b> (quartier du Peyron), puis montez en navette ou à pied.</p>
+    <div class="nav-gps"><a class="btn waze" href="https://waze.com/ul?q=Parking%20des%20Pr%C3%A9s%2C%20Chemin%20de%20la%20Billoire%2C%2006640%20Saint-Jeannet&amp;navigate=yes">🚗 Parking des Prés</a><a class="alt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Parking+des+Pr%C3%A9s%2C+Chemin+de+la+Billoire%2C+06640+Saint-Jeannet">ou Google Maps</a></div>
+    <svg class="plan" viewBox="0 0 340 230" role="img" aria-label="Plan schématique : du parking des Prés au village">
+      <path d="M0 70 Q60 10 120 40 T230 20 T340 45 V0 H0Z" fill="#d9d6cf"/>
+      <text x="190" y="30" font-size="11" fill="#6b665c" font-family="Inter">Baous</text>
+      <path d="M70 200 C110 180 90 150 140 140 S200 110 190 90 S240 70 250 62" fill="none" stroke="#1f5486" stroke-width="4" stroke-linecap="round"/>
+      <path d="M70 200 C80 160 150 150 160 110 S230 80 250 62" fill="none" stroke="#3a9440" stroke-width="3" stroke-dasharray="2 7" stroke-linecap="round"/>
+      <circle cx="70" cy="200" r="9" fill="#1f5486"/><text x="84" y="214" font-size="12" font-weight="600" font-family="Inter" fill="#2b2a26">P École des Prés</text>
+      <circle cx="140" cy="140" r="5" fill="#fff" stroke="#1f5486" stroke-width="3"/><text x="150" y="150" font-size="10.5" font-family="Inter" fill="#6b665c">Peyron</text>
+      <circle cx="190" cy="92" r="5" fill="#fff" stroke="#1f5486" stroke-width="3"/><text x="200" y="104" font-size="10.5" font-family="Inter" fill="#6b665c">La Cabergue</text>
+      <circle cx="250" cy="62" r="10" fill="#e9c23f"/><text x="200" y="56" font-size="12" font-weight="600" font-family="Inter" fill="#2b2a26">Village</text>
+      <line x1="16" y1="16" x2="36" y2="16" stroke="#1f5486" stroke-width="4"/><text x="40" y="20" font-size="10" font-family="Inter" fill="#2b2a26">Navette</text>
+      <line x1="90" y1="16" x2="110" y2="16" stroke="#3a9440" stroke-width="3" stroke-dasharray="2 5"/><text x="114" y="20" font-size="10" font-family="Inter" fill="#2b2a26">À pied</text>
+    </svg>
+    <div class="src">Plan schématique, non à l'échelle.</div>
+  </div>
+</section>
+
+<!-- NAVETTE -->
+<section class="vue" id="v-navette">
+  <div class="carte">
+    <h2>🚐 Navette communale gratuite</h2>
+    <span class="tag t-vert">Gratuite</span><span class="tag t-ocre" id="tagSaison">–</span>
+    <div class="horaires">
+      <div>Matin<b>9h30 – 13h00</b></div>
+      <div>Après-midi<b>14h00 – 17h30</b></div>
+    </div>
+    <div class="saisons">
+      <div id="sBasse"><b>Basse saison · novembre → avril</b><span>Samedi uniquement</span></div>
+      <div id="sHaute"><b>Haute saison · mai → octobre</b><span>Samedi et dimanche</span></div>
+    </div>
+    <p class="muted" style="margin-top:10px">Mêmes horaires toute l'année. Fréquence de passage : à confirmer auprès de la mairie (04 93 59 49 45).</p>
+    <h3 style="margin-top:14px">Arrêts</h3>
+    <ul class="arrets">
+      <li class="term"><b>Parking de l'école Les Prés</b><div class="muted">Départ — stationnement conseillé</div></li>
+      <li><b>Peyron</b><div class="muted">En face de la station-service</div></li>
+      <li><b>Le Brusquet</b><div class="muted">Arrêt à confirmer (absent de certaines affiches)</div></li>
+      <li><b>La Cabergue</b></li>
+      <li class="term"><b>Parking René Veyssi</b><div class="muted">En face du service Tourisme — village</div></li>
+    </ul>
+    <div class="nav-gps"><a class="btn waze" href="https://waze.com/ul?q=Parking%20des%20Pr%C3%A9s%2C%20Chemin%20de%20la%20Billoire%2C%2006640%20Saint-Jeannet&amp;navigate=yes">🚗 Aller au parking des Prés</a><a class="alt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Parking+des+Pr%C3%A9s%2C+Chemin+de+la+Billoire%2C+06640+Saint-Jeannet">ou Google Maps</a></div>
+  </div>
+  <div class="carte">
+    <h3>Navette pendant les fêtes</h3>
+    <p class="muted" style="margin:6px 0 0">Des horaires spéciaux sont publiés pour les festivités et événements (vide-grenier, fête du village…). Voir le site de la mairie.</p>
+    <a class="btn sec" href="https://www.saintjeannet.org/accueil/navette/">Site de la mairie</a>
+  </div>
+  <div class="carte">
+    <h3>🚌 Aussi : bus Lignes d'Azur</h3>
+    <p style="margin:6px 0 0">Les lignes <b>47</b> et <b>54</b> montent au village. La 54 relie Grand Arénas (Nice) et Cap 3000.</p>
+  </div>
+</section>
+
+<!-- PARKINGS -->
+<section class="vue" id="v-parkings">
+  <div id="alerteMarche2"></div>
+  <div class="carte">
+    <h3>🅿️ Parking de l'école des Prés</h3>
+    <span class="tag t-vert">Recommandé le week-end</span><span class="tag t-ciel">Départ navette</span>
+    <p class="muted" style="margin:8px 0 0">Chemin de la Billoire, quartier du Peyron, en bas de la commune. Village à 20–30 min à pied.<br>Capacité : à renseigner.</p>
+    <div class="nav-gps"><a class="btn waze" href="https://waze.com/ul?q=Parking%20des%20Pr%C3%A9s%2C%20Chemin%20de%20la%20Billoire%2C%2006640%20Saint-Jeannet&amp;navigate=yes">🚗 Itinéraire</a><a class="alt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Parking+des+Pr%C3%A9s%2C+Chemin+de+la+Billoire%2C+06640+Saint-Jeannet">ou Google Maps</a></div>
+  </div>
+  <div class="carte">
+    <h3>🅿️ Parking René Veyssi</h3>
+    <span class="tag t-vert">Gratuit</span><span class="tag t-ocre">Plein lors des événements</span><span class="tag t-ciel">⚡ Borne T2 22 kW</span>
+    <p class="muted" style="margin:8px 0 0">Chemin de la Tourraque, entrée du village, en face du service Tourisme. Terminus de la navette.<br>Sans disque. Capacité : à renseigner.</p>
+    <div class="nav-gps"><a class="btn waze" href="https://waze.com/ul?q=Parking%20Ren%C3%A9%20Veyssi%2C%20Chemin%20de%20la%20Tourraque%2C%2006640%20Saint-Jeannet&amp;navigate=yes">🚗 Itinéraire</a><a class="alt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Parking+Ren%C3%A9+Veyssi%2C+Chemin+de+la+Tourraque%2C+06640+Saint-Jeannet">ou Google Maps</a></div>
+  </div>
+  <div class="carte">
+    <h3>🅿️ Parking Sainte-Barbe</h3>
+    <span class="tag t-ocre">Disque 2 h</span><span class="tag t-ciel">8h – 18h en semaine</span><span class="tag t-vert">Libre le week-end</span><span class="tag t-rouge">Interdit lors des événements</span>
+    <p class="muted" style="margin:8px 0 0">De 8h à 18h en semaine : stationnement limité à 2 h avec disque. Week-end : gratuit, sans disque. Stationnement interdit uniquement lors des événements.</p>
+    <div class="nav-gps"><a class="btn waze" href="https://waze.com/ul?q=Parking%20Sainte-Barbe%2C%2006640%20Saint-Jeannet&amp;navigate=yes">🚗 Itinéraire</a><a class="alt" href="https://www.google.com/maps/dir/?api=1&amp;destination=Parking+Sainte-Barbe%2C+06640+Saint-Jeannet">ou Google Maps</a></div>
+  </div>
+</section>
+
+<!-- A PIED -->
+<section class="vue" id="v-pied">
+  <div class="carte">
+    <h2>🥾 Monter à pied</h2>
+    <p style="margin:4px 0 0">Du <b>parking des Prés / Peyron</b> jusqu'au village : environ <b>20 à 30 min</b> de marche.</p>
+    <h3 style="margin-top:14px">Le tracé : parking des Prés → village</h3>
+    <svg class="plan" viewBox="0 0 340 300" role="img" aria-label="Tracé à pied du parking des Prés au village">
+      <rect x="0" y="0" width="340" height="300" rx="12" fill="#f4f9f1"/>
+      <path d="M0 60 Q70 10 140 34 T260 18 T340 40 V0 H0Z" fill="#d9d6cf"/>
+      <text x="200" y="24" font-size="11" fill="#5d6b7a" font-family="Inter">Baou</text>
+      <path d="M60 262 C95 250 110 228 128 212 S170 190 176 166 S210 132 222 116 S262 86 272 68" fill="none" stroke="#3a9440" stroke-width="5" stroke-dasharray="1 9" stroke-linecap="round"/>
+      <g font-family="Inter" font-size="11.5" fill="#12324f">
+        <circle cx="60" cy="262" r="11" fill="#0a4f9e"/><text x="55.5" y="266.5" fill="#fff" font-weight="700">P</text>
+        <text x="78" y="282" font-weight="700">Départ · parking des Prés</text>
+        <circle cx="128" cy="212" r="6" fill="#fff" stroke="#3a9440" stroke-width="3"/><text x="142" y="216">Peyron</text>
+        <circle cx="176" cy="166" r="6" fill="#fff" stroke="#3a9440" stroke-width="3"/><text x="190" y="170">Le Brusquet</text>
+        <circle cx="222" cy="116" r="6" fill="#fff" stroke="#3a9440" stroke-width="3"/><text x="88" y="120">La Cabergue</text>
+        <circle cx="272" cy="68" r="12" fill="#e9c23f"/><text x="196" y="62" font-weight="700">Village</text>
+      </g>
+      <g font-family="Inter" font-size="10.5" fill="#5d6b7a">
+        <text x="14" y="200">≈ 20–30 min</text>
+        <text x="14" y="214">montée régulière</text>
+      </g>
+    </svg>
+    <p class="src">Tracé schématique qui suit les arrêts de la navette. Trottoirs, raccourcis et escaliers conseillés : à confirmer avec les services techniques.</p>
+    <div class="nav-gps"><a class="btn" href="https://www.google.com/maps/dir/?api=1&amp;origin=Parking+des+Pr%C3%A9s%2C+Chemin+de+la+Billoire%2C+06640+Saint-Jeannet&amp;destination=H%C3%B4tel+de+ville%2C+54+Rue+du+Ch%C3%A2teau%2C+06640+Saint-Jeannet&amp;travelmode=walking">🥾 Voir le tracé à pied</a><span class="alt">Google Maps, mode piéton</span></div>
+  </div>
+  <div class="carte">
+    <img src="img/sommet.jpg" alt="Table d'orientation au sommet du Baou, vue sur la côte" class="photo">
+    <h2>Randonnées depuis le village</h2>
+    <p class="muted" style="margin:0">Le GR 51 « Balcons de la Côte d'Azur » traverse le village.</p>
+
+    <div class="rando" style="margin-top:12px">
+      <h3>Petite boucle n°1 du village</h3>
+      <span class="tag t-vert">Facile</span>
+      <p class="muted" style="margin:6px 0 0">Promenade courte avec vue sur le village et le cap d'Antibes. Distance : à renseigner.</p>
+    </div>
+    <div class="rando">
+      <h3>Circuit du Baou de la Gaude</h3>
+      <span class="tag t-ocre">Moyenne</span><span class="tag t-gris">Boucle</span>
+      <div class="chiffres"><span><b>6,8 km</b></span><span><b>+443 m</b></span><span><b>≈ 3h15</b></span></div>
+      <p class="muted" style="margin:6px 0 0">Départ parking du village. Pas de point d'eau sur le parcours.</p>
+      <a class="btn sec" href="https://www.visorando.com/randonnee-circuit-du-baou-de-la-gaude/">Voir le tracé</a>
+    </div>
+    <div class="rando">
+      <h3>Baou de Saint-Jeannet, retour par le Castellet</h3>
+      <span class="tag t-ocre">Moyenne</span><span class="tag t-gris">Boucle</span>
+      <div class="chiffres"><span><b>10,2 km</b></span><span><b>+552 m</b></span><span><b>≈ 3h</b></span><span>Sommet 802 m</span></div>
+      <a class="btn sec" href="https://randogps.net/randonnee-pedestre-gps-alpes-maritimes-6.php?num=606">Voir le tracé</a>
+    </div>
+    <div class="rando">
+      <h3>Bories, Jas Jauserand & Baou de la Gaude</h3>
+      <span class="tag t-rouge">Soutenue</span><span class="tag t-gris">Boucle</span>
+      <div class="chiffres"><span><b>11,6 km</b></span><span><b>+700 m</b></span><span><b>≈ 4h30</b></span></div>
+      <p class="muted" style="margin:6px 0 0">Bories, aire de battage, vieille bergerie, gros chêne du Baou de la Gaude.</p>
+      <a class="btn sec" href="https://randogps.net/randonnee-pedestre-gps-alpes-maritimes-6.php?num=160">Voir le tracé</a>
+    </div>
+    <p class="src">Distances et durées issues de sites de randonnée publics — à valider avant diffusion.</p>
+  </div>
+  <div class="carte">
+    <h3>Avant de partir</h3>
+    <ul class="conseils">
+      <li>💧 Remplissez votre gourde au village.</li>
+      <li>🐕 Chien tenu en laisse : troupeaux possibles.</li>
+      <li>👟 Bonnes chaussures : sentiers caillouteux.</li>
+      <li>☀️ L'été, partez tôt.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GREEN -->
+<section class="vue" id="v-green">
+  <div class="carte calc">
+    <h2>🌿 Mon impact</h2>
+    <p class="muted" style="margin:0">Combien de CO₂ j'évite en laissant la voiture en bas ?</p>
+    <label>Montées + descentes évitées en voiture par mois : <b id="lN">4</b></label>
+    <input type="range" id="n" min="1" max="30" value="4">
+    <label>Distance aller-retour évitée (km) : <b id="lK">6</b></label>
+    <input type="range" id="k" min="1" max="20" value="6">
+    <div class="res">
+      <div>Par mois<b id="rM">–</b>kg CO₂ évités</div>
+      <div>Par an<b id="rA">–</b>kg CO₂ évités</div>
+    </div>
+    <p class="src">Hypothèse : ≈ 0,2 kg CO₂/km pour une voiture thermique moyenne (ordre de grandeur, à affiner avec la base ADEME). Distance par défaut à ajuster.</p>
+  </div>
+  <div class="carte">
+    <h3>⚡ Bornes de recharge</h3>
+    <ul class="conseils">
+      <li><b>Parking René Veyssi</b> — 2 chemin de la Tourraque, prise T2 jusqu'à 22 kW</li>
+      <li><b>Le Peyron</b> — 2525 route de Gattières</li>
+      <li><b>Saint-Estève</b> — ZAC de Saint-Estève</li>
+    </ul>
+  </div>
+  <div class="carte">
+    <h3>Respecter les Baous</h3>
+    <ul class="conseils">
+      <li>Restez sur les sentiers balisés.</li>
+      <li>Rapportez vos déchets.</li>
+      <li>Préservez les murets et bories en pierre sèche.</li>
+      <li>Pas de feu dans la garrigue.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<nav>
+  <button class="active" data-go="accueil"><span class="ic">🏠</span>Accueil</button>
+  <button data-go="navette"><span class="ic">🚐</span>Navette</button>
+  <button data-go="parkings"><span class="ic">🅿️</span>Parkings</button>
+  <button data-go="pied"><span class="ic">🥾</span>À pied</button>
+  <button data-go="green"><span class="ic">🌿</span>Green</button>
+</nav>
+
+<script>
+const vues=["accueil","navette","parkings","pied","green"];
+function go(v){
+  if(!vues.includes(v)) v="accueil";
+  document.querySelectorAll("section.vue").forEach(s=>s.classList.toggle("active",s.id==="v-"+v));
+  document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("active",b.dataset.go===v));
+  window.scrollTo(0,0);
+  if(location.hash!=="#"+v) history.replaceState(null,"","#"+v);
+}
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+window.addEventListener("hashchange",()=>go(location.hash.slice(1)));
+go(location.hash.slice(1)||"accueil");
+
+// Statut navette — basse saison (nov→avr) : samedi ; haute saison (mai→oct) : samedi + dimanche
+function hm(d){return d.getHours()*60+d.getMinutes();}
+function hauteSaison(d){const mo=d.getMonth();return mo>=4&&mo<=9;}
+function jourService(d){const j=d.getDay();return j===6||(j===0&&hauteSaison(d));}
+function statutNavette(){
+  const d=new Date(), m=hm(d), haute=hauteSaison(d);
+  const p=document.getElementById("pNav"), t=document.getElementById("navTitre"), x=document.getElementById("navTexte");
+  document.getElementById("tagSaison").textContent=haute?"Haute saison · sam. & dim.":"Basse saison · samedi";
+  document.getElementById("sHaute").classList.toggle("actuelle",haute);
+  document.getElementById("sBasse").classList.toggle("actuelle",!haute);
+  const ouvert=jourService(d)&&((m>=570&&m<780)||(m>=840&&m<1050));
+  p.className="pastille "+(ouvert?"on":"off");
+  if(ouvert){t.textContent="Navette en service";x.textContent="Jusqu'à "+(m<780?"13h00":"17h30")+" · départ parking des Prés";return;}
+  t.textContent="Navette à l'arrêt";
+  let prochain;
+  if(jourService(d)&&m<570) prochain="aujourd'hui à 9h30";
+  else if(jourService(d)&&m>=780&&m<840) prochain="aujourd'hui à 14h00";
+  else{
+    for(let i=1;i<=7;i++){const n=new Date(d);n.setDate(d.getDate()+i);
+      if(jourService(n)){prochain=(i===1?"demain":n.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"}))+" à 9h30";break;}}
+  }
+  x.textContent="Prochain service : "+prochain+" · "+(haute?"haute saison (sam. & dim.)":"basse saison (samedi uniquement)");
+}
+statutNavette(); setInterval(statutNavette,60000);
+
+// Marché Mounta Cala : 1er mercredi = Veyssi, 3e mercredi = Prés (8h–13h30)
+function nemeMercredi(an,mois,n){const d=new Date(an,mois,1);const dec=(3-d.getDay()+7)%7;return new Date(an,mois,1+dec+7*(n-1));}
+function alerteMarche(){
+  const auj=new Date(); auj.setHours(0,0,0,0);
+  const evts=[];
+  for(let k=0;k<2;k++){
+    const a=auj.getFullYear(), mo=auj.getMonth()+k;
+    evts.push({d:nemeMercredi(a,mo,1),lieu:"parking René Veyssi"});
+    evts.push({d:nemeMercredi(a,mo,3),lieu:"parking des Prés"});
+  }
+  const prochain=evts.filter(e=>e.d>=auj).sort((a,b)=>a.d-b.d)[0];
+  if(!prochain) return;
+  const jours=Math.round((prochain.d-auj)/86400000);
+  if(jours>7) return;
+  const quand=jours===0?"aujourd'hui":jours===1?"demain":prochain.d.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+  const html='<div class="alerte">🧺 Marché <b>Mounta Cala</b> '+quand+' de 8h à 13h30 sur le <b>'+prochain.lieu+'</b> : stationnement réduit.</div>';
+  document.getElementById("alerteMarche").innerHTML=html;
+  document.getElementById("alerteMarche2").innerHTML=html;
+}
+alerteMarche();
+
+// Calculateur CO2
+const n=document.getElementById("n"), k=document.getElementById("k");
+function calc(){
+  document.getElementById("lN").textContent=n.value;
+  document.getElementById("lK").textContent=k.value;
+  const mois=n.value*k.value*0.2;
+  document.getElementById("rM").textContent=mois.toFixed(1).replace(".",",");
+  document.getElementById("rA").textContent=Math.round(mois*12);
+}
+n.addEventListener("input",calc); k.addEventListener("input",calc); calc();
+
+// Aide à l'installation (uniquement dans la version hébergée, qui a un manifest)
+(function(){
+  if(!document.querySelector('link[rel="manifest"]')) return;
+  const box=document.getElementById("installer");
+  const ua=navigator.userAgent, ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const installee=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+  let ferme=false; try{ferme=localStorage.getItem("baougo-install-ferme")==="1";}catch(e){}
+  if(installee||ferme) return;
+  document.getElementById("instX").onclick=()=>{box.hidden=true;try{localStorage.setItem("baougo-install-ferme","1");}catch(e){}};
+  if(ios){ box.hidden=false; return; }
+  let evt=null;
+  window.addEventListener("beforeinstallprompt",e=>{
+    e.preventDefault(); evt=e;
+    document.getElementById("instIos").hidden=true;
+    document.getElementById("instAndroid").hidden=false;
+    const b=document.getElementById("instBtn"); b.hidden=false; box.hidden=false;
+    b.onclick=async()=>{evt.prompt(); try{await evt.userChoice;}catch(e){} box.hidden=true;};
+  });
+})();
+
+// Mode hors ligne (fonctionne une fois l'appli hébergée en HTTPS)
+if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
+</script>
+</body>
+</html>
