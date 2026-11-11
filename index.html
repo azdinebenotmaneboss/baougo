@@ -174,7 +174,6 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
       </div>
     </div>
   </div>
-  <div id="alerteMarche"></div>
 
   <div class="carte">
     <h2>Comment voulez-vous monter ?</h2>
@@ -242,7 +241,6 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
 
 <!-- PARKINGS -->
 <section class="vue" id="v-parkings">
-  <div id="alerteMarche2"></div>
   <div class="carte">
     <h3>🅿️ Parking de l'école des Prés</h3>
     <span class="tag t-vert">Recommandé le week-end</span><span class="tag t-ciel">Départ navette</span>
@@ -414,26 +412,6 @@ function statutNavette(){
 }
 statutNavette(); setInterval(statutNavette,60000);
 
-// Marché Mounta Cala : 1er mercredi = Veyssi, 3e mercredi = Prés (8h–13h30)
-function nemeMercredi(an,mois,n){const d=new Date(an,mois,1);const dec=(3-d.getDay()+7)%7;return new Date(an,mois,1+dec+7*(n-1));}
-function alerteMarche(){
-  const auj=new Date(); auj.setHours(0,0,0,0);
-  const evts=[];
-  for(let k=0;k<2;k++){
-    const a=auj.getFullYear(), mo=auj.getMonth()+k;
-    evts.push({d:nemeMercredi(a,mo,1),lieu:"parking René Veyssi"});
-    evts.push({d:nemeMercredi(a,mo,3),lieu:"parking des Prés"});
-  }
-  const prochain=evts.filter(e=>e.d>=auj).sort((a,b)=>a.d-b.d)[0];
-  if(!prochain) return;
-  const jours=Math.round((prochain.d-auj)/86400000);
-  if(jours>7) return;
-  const quand=jours===0?"aujourd'hui":jours===1?"demain":prochain.d.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
-  const html='<div class="alerte">🧺 Marché <b>Mounta Cala</b> '+quand+' de 8h à 13h30 sur le <b>'+prochain.lieu+'</b> : stationnement réduit.</div>';
-  document.getElementById("alerteMarche").innerHTML=html;
-  document.getElementById("alerteMarche2").innerHTML=html;
-}
-alerteMarche();
 
 // Calculateur CO2
 const n=document.getElementById("n"), k=document.getElementById("k");
