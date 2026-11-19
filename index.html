@@ -120,7 +120,7 @@ section.vue.active{display:block}
 ul.conseils{padding-left:18px;margin:8px 0 0}
 ul.conseils li{margin-bottom:6px}
 nav{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));background:var(--olive);border-radius:20px;display:flex;padding:6px 4px;z-index:9;box-shadow:0 6px 20px rgba(10,40,80,.35);border-top:3px solid var(--or)}
-nav button{flex:1;background:none;border:0;font:inherit;font-size:11px;color:#dce7f5;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;cursor:pointer;border-radius:14px}
+nav button{flex:1;min-width:0;background:none;border:0;font:inherit;font-size:11px;color:#dce7f5;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;cursor:pointer;border-radius:14px}
 nav button .ic{font-size:22px;line-height:1}
 nav button.active{color:var(--encre);background:var(--or);font-weight:700}
 .plan{width:100%;height:auto;display:block;margin-top:8px}
@@ -146,7 +146,7 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
     <div class="entete">
       <div class="marque"><span class="b">Baou</span><span class="g">Go</span><svg class="feuille" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3C10 3 4 8 4 15c0 2 .6 3.6 1.4 4.8C7 13 11 10 16 8c-4 3-7 6-8.6 11.6C8.6 20.5 10 21 12 21c6 0 9-6 8-18z" fill="#3a9440"/></svg></div>
       <p>Garez-vous en bas, montez léger</p>
-      <div class="pills"><button data-go="navette">🚐 navette</button><button data-go="pied">🥾 marche</button><button data-go="parkings">🅿️ parkings</button><button data-go="navette" data-ancre="velo">🚲 vélo</button></div>
+      <div class="pills"><button data-go="navette">🚐 navette</button><button data-go="pied">🥾 marche</button><button data-go="parkings">🅿️ parkings</button><button data-go="velo">🚲 vélo</button></div>
     </div>
   </div>
 </header>
@@ -185,7 +185,7 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
       <button data-go="navette"><span class="ic">🚐</span>Navette<small>gratuite</small></button>
       <button data-go="pied"><span class="ic">🥾</span>À pied<small>20–30 min</small></button>
       <button data-go="parkings"><span class="ic">🅿️</span>Voiture<small>parkings</small></button>
-      <button data-go="navette" data-ancre="velo"><span class="ic">🚲</span>Vélo électrique<small>Lime · Pony</small></button>
+      <button data-go="velo"><span class="ic">🚲</span>Vélo électrique<small>Lime · Pony</small></button>
     </div>
   </div>
 
@@ -238,7 +238,15 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
     <p class="muted" style="margin:6px 0 0">Des horaires spéciaux sont publiés pour les festivités et événements (vide-grenier, fête du village…). Voir le site de la mairie.</p>
     <a class="btn sec" href="https://www.saintjeannet.org/accueil/navette/">Site de la mairie</a>
   </div>
-  <div class="carte" id="velo">
+  <div class="carte">
+    <h3>🚌 Aussi : bus Lignes d'Azur</h3>
+    <p style="margin:6px 0 0">Les lignes <b>47</b> et <b>54</b> montent au village. La 54 relie Grand Arénas (Nice) et Cap 3000.</p>
+  </div>
+</section>
+
+<!-- PARKINGS -->
+<section class="vue" id="v-velo">
+  <div class="carte">
     <h3>🚲 Vélos électriques en libre-service</h3>
     <span class="tag t-vert">24h/24 · 7j/7</span><span class="tag t-ciel">Lime</span><span class="tag t-ciel">Pony</span>
     <p style="margin:8px 0 0">Les <b>Vélos Bleus</b> ont été remplacés par <b>Lime</b> et <b>Pony</b>. Saint-Jeannet fait partie des communes desservies. Des vélos électriques sont disponibles au <b>Peyron</b> : idéal pour monter au village sans effort.</p>
@@ -250,13 +258,8 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
     <p class="muted" style="margin:8px 0 0">Pony dès 16 ans, Lime dès 18 ans. Assistance jusqu'à 25 km/h. Tarifs affichés dans chaque appli. Un vélo laissé hors zone peut être pénalisé.</p>
     <div class="nav-gps"><a class="btn" href="https://www.nicecotedazur.org/services/transports-et-mobilites/velo/louer-un-velo-en-libre-service/">En savoir plus</a><span class="alt">Métropole Nice Côte d'Azur</span></div>
   </div>
-  <div class="carte">
-    <h3>🚌 Aussi : bus Lignes d'Azur</h3>
-    <p style="margin:6px 0 0">Les lignes <b>47</b> et <b>54</b> montent au village. La 54 relie Grand Arénas (Nice) et Cap 3000.</p>
-  </div>
 </section>
 
-<!-- PARKINGS -->
 <section class="vue" id="v-parkings">
   <div class="carte">
     <h3>🅿️ Parking de l'école des Prés</h3>
@@ -369,7 +372,7 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
       <div>Par an<b id="rA">–</b>kg CO₂ évités</div>
     </div>
     <p class="src">Estimation : environ 0,2 kg de CO₂ par km pour une voiture thermique moyenne.</p>
-    <button class="btn sec" data-go="navette" data-ancre="velo">🚲 Monter en vélo électrique</button>
+    <button class="btn sec" data-go="velo">🚲 Monter en vélo électrique</button>
   </div>
   <div class="carte">
     <h3>⚡ Bornes de recharge</h3>
@@ -396,12 +399,13 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
   <button class="active" data-go="accueil"><span class="ic">🏠</span>Accueil</button>
   <button data-go="navette"><span class="ic">🚐</span>Navette</button>
   <button data-go="parkings"><span class="ic">🅿️</span>Parkings</button>
+  <button data-go="velo"><span class="ic">🚲</span>Vélo</button>
   <button data-go="pied"><span class="ic">🥾</span>À pied</button>
   <button data-go="green"><span class="ic">🌿</span>Green</button>
 </nav>
 
 <script>
-const vues=["accueil","navette","parkings","pied","green"];
+const vues=["accueil","navette","velo","parkings","pied","green"];
 function go(v){
   if(!vues.includes(v)) v="accueil";
   document.querySelectorAll("section.vue").forEach(s=>s.classList.toggle("active",s.id==="v-"+v));
