@@ -58,9 +58,10 @@ header .marque .b{color:var(--olive)}
 header .marque .g{color:var(--vert)}
 header .marque .feuille{width:34px;height:34px;margin:-24px 0 0 2px;transform:rotate(8deg)}
 header p{margin:8px 0 0;font-family:Outfit,Inter,sans-serif;font-weight:300;font-size:16px;color:var(--encre);letter-spacing:.02em}
-header .pills{display:flex;justify-content:center;gap:6px;margin-top:12px;flex-wrap:wrap}
-header .pills button{font-family:inherit;cursor:pointer;font-size:12px;font-weight:600;color:var(--olive);background:rgba(255,255,255,.85);border:1px solid #cfe0f2;border-radius:999px;padding:4px 10px;backdrop-filter:blur(4px)}
+header .pills{display:flex;justify-content:center;gap:5px;margin-top:12px;flex-wrap:wrap}
+header .pills button{font-family:inherit;cursor:pointer;font-size:12px;font-weight:600;color:var(--olive);background:rgba(255,255,255,.85);border:1px solid #cfe0f2;border-radius:999px;padding:4px 8px;white-space:nowrap;backdrop-filter:blur(4px)}
 header .pills button:active{background:var(--olive);color:#fff}
+@media (max-width:370px){header .pills button{font-size:11px;padding:4px 7px}header .pills{gap:4px}}
 .installer{display:flex;gap:12px;align-items:flex-start;margin-top:12px;background:#fff;border:1.5px solid var(--olive);border-radius:var(--r);padding:12px 12px 12px 14px;position:relative;box-shadow:0 4px 14px rgba(10,79,158,.12)}
 [hidden]{display:none!important}
 .inst-ic{width:46px;height:46px;border-radius:11px;flex:0 0 46px}
@@ -145,7 +146,7 @@ nav button.active{color:var(--encre);background:var(--or);font-weight:700}
     <div class="entete">
       <div class="marque"><span class="b">Baou</span><span class="g">Go</span><svg class="feuille" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 3C10 3 4 8 4 15c0 2 .6 3.6 1.4 4.8C7 13 11 10 16 8c-4 3-7 6-8.6 11.6C8.6 20.5 10 21 12 21c6 0 9-6 8-18z" fill="#3a9440"/></svg></div>
       <p>Garez-vous en bas, montez léger</p>
-      <div class="pills"><button data-go="navette">🚐 navette</button><button data-go="pied">🥾 marche</button><button data-go="parkings">🅿️ parkings</button></div>
+      <div class="pills"><button data-go="navette">🚐 navette</button><button data-go="pied">🥾 marche</button><button data-go="parkings">🅿️ parkings</button><button data-go="navette" data-ancre="velo">🚲 vélo</button></div>
     </div>
   </div>
 </header>
