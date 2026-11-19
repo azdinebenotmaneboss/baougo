@@ -1,5 +1,5 @@
 // BaouGo – cache hors ligne. Changer VERSION à chaque mise à jour des contenus.
-const VERSION = "baougo-v9";
+const VERSION = "baougo-v10";
 const FICHIERS = [
   "./", "index.html", "manifest.webmanifest",
   "img/logo.png", "img/filigrane.jpg", "img/sommet.jpg",
